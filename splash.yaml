@@ -1,0 +1,7 @@
+flutter_native_splash: 
+image: assets\images\welcome.jpeg
+
+android_12:
+image: assets\images\welcome.jpeg
+
+web: false

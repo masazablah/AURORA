@@ -37,6 +37,11 @@ dependencies:
   cupertino_icons: ^1.0.6
   mj_image_slider: ^0.0.7
   carousel_slider: ^4.0.0
+  dotted_border: ^2.1.0
+  scaled_list: ^2.0.0
+
+
+  
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,8 @@
 import 'package:aurora_software_project/ProductDetailsPage.dart';
+import 'package:aurora_software_project/search.dart';
 import 'package:flutter/material.dart';
 import 'package:aurora_software_project/constants.dart';
-import './faceMakeup.dart';
+import 'package:aurora_software_project/Product.dart';
 
 class makeupScreen extends StatefulWidget {
   @override
@@ -12,201 +13,243 @@ class _makeupScreenState extends State<makeupScreen> {
   int selectedIndex = -1;
 
   List<Product> products = [
-    Product(name: 'Product 1', image: 'assets/images/eyes1.jpg', price: 10.99),
-    Product(name: 'Product 2', image: 'assets/images/lipliner.jpg', price: 19.99),
-    Product(name: 'Product 3', image: 'assets/images/maskara.jpg', price: 14.99),
-    Product(name: 'Product 4', image: 'assets/images/lips1.jpg', price: 10.99),
-    Product(name: 'Product 5', image: 'assets/images/lipliner.jpg', price: 19.99),
-    Product(name: 'Product 6', image: 'assets/images/maskara.jpg', price: 14.99),
-    Product(name: 'Product 7', image: 'assets/images/eyes1.jpg', price: 10.99),
-    Product(name: 'Product 8', image: 'assets/images/lipliner.jpg', price: 19.99),
-    Product(name: 'Product 9', image: 'assets/images/maskara.jpg', price: 14.99),
-    // Add more products as needed
+    Product(
+      name: 'Huda Beauty Eyeshadow palette',
+      images: [
+        'assets/images/eyes1.jpg',
+      ],
+      price: 10.99,
+    ),
+    Product(
+      name: 'Product 2',
+      images: [
+        'assets/images/lips4.jpg',
+
+      ],
+      price: 19.99,
+    ),
+    Product(
+      name: 'Product 3',
+      images: [
+        'assets/images/face1.jpg',
+
+      ],
+      price: 19.99,
+    ),
+    Product(
+      name: 'Product 3',
+      images: [
+        'assets/images/lipliner.jpg',
+        'assets/images/lipliner2.jpg',
+        'assets/images/lipliner3.jpg',
+      ],
+      price: 19.99,
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          title: Padding(
-            padding: const EdgeInsets.only(top: 10.0),
-            child: Text(
-              'Shop Clean Makeup',
-              style: TextStyle(
-                color: Color(0xFF9B93E1),
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-              ),
-            ),
-          ),
-          centerTitle: true,
-        ),
-        body: Padding(
-  padding: const EdgeInsets.only(top: 20.0),
-  child: Container(
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Wrap(
-            spacing: 16.0,
-            runSpacing: 16.0,
-            alignment: WrapAlignment.start,
-            children: <Widget>[
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    selectedIndex = 1;
-                  });
-                },
-                child: CategoryWidget(
-                  name: 'Shop All',
-                  index: 1,
-                  selectedIndex: selectedIndex,
-                  onPressed: (index) {
-                    setState(() {
-                      selectedIndex = index;
-                    });
-                  },
-                ),
-              ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            selectedIndex = 2;
-                          });
-                        },
-                        child: CategoryWidget(
-                          name: 'Face',
-                          logo: 'assets/images/spray.png',
-                          index: 2,
-                          selectedIndex: selectedIndex,
-                          onPressed: (index) {
-                            setState(() {
-                              selectedIndex = index;
-                            });
-                          },
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            selectedIndex = 3;
-                          });
-                          // Add your onTap logic here
-                        },
-                        child: CategoryWidget(
-                          name: 'Cheeks',
-                          logo: 'assets/images/brush.png',
-                          index: 3,
-                          selectedIndex: selectedIndex,
-                          onPressed: (index) {
-                            setState(() {
-                              selectedIndex = index;
-                            });
-                          },
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // Add your onTap logic here
-                        },
-                        child: CategoryWidget(
-                          name: 'Eyes',
-                          logo: 'assets/images/eye.png',
-                          index: 4,
-                          selectedIndex: selectedIndex,
-                          onPressed: (index) {
-                            setState(() {
-                              selectedIndex = index;
-                            });
-                          },
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // Add your onTap logic here
-                        },
-                        child: CategoryWidget(
-                          name: 'Lips',
-                          logo: 'assets/images/lips.png',
-                          index: 5,
-                          selectedIndex: selectedIndex,
-                          onPressed: (index) {
-                            setState(() {
-                              selectedIndex = index;
-                            });
-                          },
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          // Add your onTap logic here
-                   
-                                  },
-                        child: CategoryWidget(
-                           name: 'Brow',
-                           logo: 'assets/images/brows.png',
-                          index: 6,
-                           selectedIndex: selectedIndex,
-                          onPressed: (index) {
-                            setState(() {
-                              selectedIndex = index;
-                            });
-                          },
-                        ),
-                      ),
-                    ],
+    return Scaffold(
+      backgroundColor: Colors.white,
+    
+      body: CustomScrollView(
+        
+          slivers: <Widget>[
+            SliverAppBar(
+              automaticallyImplyLeading: false,
+              backgroundColor: Colors.white,
+              elevation: 0,
+              title: Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Text(
+                  'Shop Clean Makeup',
+                  style: TextStyle(
+                    color: myColor,
+                    
+                    fontSize: 25,
                   ),
                 ),
-                  
-                SizedBox(height: 10.0),
-        SortByDropdown(),
-        SizedBox(height: 20.0),
-        Expanded(
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            mainAxisSpacing: 10.0,
-            crossAxisSpacing: 10.0,
-            childAspectRatio: 0.55, // Adjust this value to make items taller
-          ),
-          itemCount: products.length,
-          itemBuilder: (context, index) {
-            return ProductCard(product: products[index]);
-      
-                    },
+              ),
+              centerTitle: true,
+             
+              // This is the important part that makes the app bar hide on scroll
+              // Change the height according to your needs
+             
+              flexibleSpace: FlexibleSpaceBar(
+                background: Container(
+                  // Add your background image or color here
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                Container(
+                   padding: EdgeInsets.only(top: 25),
+                  child: Column(children: [
+                          SearchP(),
+                        ],
+                        ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Wrap(
+                          spacing: 10.0,
+                          runSpacing: 10.0,
+                          alignment: WrapAlignment.start,
+                          children: <Widget>[
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  selectedIndex = 1;
+                                });
+                              },
+                              child: CategoryWidget(
+                                name: 'Shop All',
+                                index: 1,
+                                selectedIndex: selectedIndex,
+                                onPressed: (index) {
+                                  setState(() {
+                                    selectedIndex = index;
+                                  });
+                                },
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  selectedIndex = 2;
+                                });
+                              },
+                              child: CategoryWidget(
+                                name: 'Face',
+                                logo: 'assets/images/spray.png',
+                                index: 2,
+                                selectedIndex: selectedIndex,
+                                onPressed: (index) {
+                                  setState(() {
+                                    selectedIndex = index;
+                                  });
+                                },
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  selectedIndex = 3;
+                                });
+                                // Add your onTap logic here
+                              },
+                              child: CategoryWidget(
+                                name: 'Cheeks',
+                                logo: 'assets/images/brush.png',
+                                index: 3,
+                                selectedIndex: selectedIndex,
+                                onPressed: (index) {
+                                  setState(() {
+                                    selectedIndex = index;
+                                  });
+                                },
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                // Add your onTap logic here
+                              },
+                              child: CategoryWidget(
+                                name: 'Eyes',
+                                logo: 'assets/images/eye.png',
+                                index: 4,
+                                selectedIndex: selectedIndex,
+                                onPressed: (index) {
+                                  setState(() {
+                                    selectedIndex = index;
+                                  });
+                                },
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                // Add your onTap logic here
+                              },
+                              child: CategoryWidget(
+                                name: 'Lips',
+                                logo: 'assets/images/lips.png',
+                                index: 5,
+                                selectedIndex: selectedIndex,
+                                onPressed: (index) {
+                                  setState(() {
+                                    selectedIndex = index;
+                                  });
+                                },
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                // Add your onTap logic here
+                              },
+                              child: CategoryWidget(
+                                name: 'Brow',
+                                logo: 'assets/images/brows.png',
+                                index: 6,
+                                selectedIndex: selectedIndex,
+                                onPressed: (index) {
+                                  setState(() {
+                                    selectedIndex = index;
+                                  });
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                     
+                   
+                      
+                     // SortByDropdown(),
+                     
+                      
+                      
+                   // SortByDropdown(),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
-        ),
+          SliverGrid(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 10.0,
+              crossAxisSpacing: 10.0,
+              childAspectRatio: 0.55,
+            ),
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                return ProductCard(product: products[index]);
+              },
+              childCount: products.length,
+            ),
+          ),
+        ],
       ),
     );
   }
 }
 
-
-
-class Product {
-  final String name;
-  final String image;
-  final double price;
-
-  Product({required this.name, required this.image, required this.price});
-}
-
 class ProductCard extends StatelessWidget {
   final Product product;
+  final double height;
+ 
 
-  ProductCard({required this.product});
+  ProductCard({required this.product, this.height = 100});
 
   @override
   Widget build(BuildContext context) {
@@ -220,6 +263,7 @@ class ProductCard extends StatelessWidget {
         );
       },
       child: Container(
+       
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10.0),
@@ -235,16 +279,18 @@ class ProductCard extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             Image.asset(
-              product.image,
+              product.images.isNotEmpty
+                  ? product.images[0]
+                  : '', // Use the first image if available, otherwise an empty string
               fit: BoxFit.cover,
               width: double.infinity,
               height: double.infinity,
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(left: 170, top: 8),
               child: Icon(
                 Icons.favorite_border_outlined,
-                color: Color(0xFF9B93E1),
+                color: myColor,
               ),
             ),
             Positioned(
@@ -273,7 +319,8 @@ class ProductCard extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0),
+                      padding: const EdgeInsets.only(
+                          left: 8.0, right: 8.0, bottom: 8.0),
                       child: Text(
                         '\$${product.price.toStringAsFixed(2)}',
                         style: TextStyle(
@@ -293,14 +340,6 @@ class ProductCard extends StatelessWidget {
   }
 }
 
-
-
-
-
-
-
-
-
 class SortByDropdown extends StatefulWidget {
   @override
   _SortByDropdownState createState() => _SortByDropdownState();
@@ -314,36 +353,35 @@ class _SortByDropdownState extends State<SortByDropdown> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-          Padding(
+        Padding(
           padding: const EdgeInsets.only(top: 30.0), // Add padding here
-       child: GestureDetector(
-          onTap: () {
-            setState(() {
-              isDropdownOpen = !isDropdownOpen;
-              print('Dropdown open: $isDropdownOpen');
-            });
-          },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Sort By',
-                style: TextStyle(fontSize: 18.0, color: Color(0xFF9B93E1)),
-              ),
-              Icon(Icons.keyboard_arrow_down), // Use your arrow icon
-            ],
+          child: GestureDetector(
+            onTap: () {
+              setState(() {
+                isDropdownOpen = !isDropdownOpen;
+                print('Dropdown open: $isDropdownOpen');
+              });
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  'Sort By',
+                  style: TextStyle(fontSize: 18.0, color: myColor),
+                ),
+                Icon(Icons.keyboard_arrow_down, color: myColor,), // Use your arrow icon
+              ],
+            ),
           ),
         ),
-       ),
         Visibility(
           visible: isDropdownOpen,
           child: Container(
-            width: 200.0,
-             // Set the width of the container
+            width: 300.0,
+            // Set the width of the container
             decoration: BoxDecoration(
-              border: Border(top: BorderSide(color: const Color(0xFF9B93E1) )),
-              
-            color: const Color.fromARGB(255, 247, 242, 242),
+              border: Border(top: BorderSide(color: myColor)),
+              color: const Color.fromARGB(255, 247, 242, 242),
             ),
             child: ListView(
               shrinkWrap: true,
@@ -359,8 +397,6 @@ class _SortByDropdownState extends State<SortByDropdown> {
     );
   }
 }
-
-
 
 class SortByOption extends StatelessWidget {
   final String text;
@@ -402,19 +438,22 @@ class _CategoryWidgetState extends State<CategoryWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        widget.onPressed(widget.index); // Call the onPressed callback with the index
+        widget.onPressed(
+            widget.index); // Call the onPressed callback with the index
       },
       child: Column(
         children: <Widget>[
           Container(
-            width: 125.0, // Set the width to a larger value
+            width: 150.0, // Set the width to a larger value
             height: 50.0,
             decoration: BoxDecoration(
-              color: widget.index == widget.selectedIndex ? Color(0xFF9B93E1) : Colors.white,
+              color: widget.index == widget.selectedIndex
+                  ? Color(0xFF716ABB)
+                  : Colors.white,
               borderRadius: BorderRadius.circular(10.0),
               border: Border.all(
-                color: Color(0xFF9B93E1),
-                width: 2.0,
+                color: Color(0xFF716ABB),
+                width: 1.0,
               ),
             ),
             child: Row(
@@ -427,7 +466,9 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontSize: 15.0,
-                        color: widget.index == widget.selectedIndex ? Colors.white : Color(0xFF9B93E1),
+                        color: widget.index == widget.selectedIndex
+                            ? Colors.white
+                            : Color(0xFF716ABB),
                       ),
                     ),
                   ),
@@ -445,6 +486,3 @@ class _CategoryWidgetState extends State<CategoryWidget> {
     );
   }
 }
-
-
-
